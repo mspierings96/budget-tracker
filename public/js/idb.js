@@ -12,7 +12,7 @@ request.onsuccess = function (event) {
 
   // check if app is online, if yes run checkDatabase() function to send all local db data to api
   if (navigator.onLine) {
-    uploadPizza();
+    uploadFinances();
   }
 };
 
@@ -24,21 +24,21 @@ request.onerror = function (event) {
 function saveRecord(record) {
   const transaction = db.transaction(["transaction"], "readwrite");
 
-  const pizzaObjectStore = transaction.objectStore("transaction");
+  const financeObjectStore = transaction.objectStore("transaction");
 
   // add record to your store with add method.
-  pizzaObjectStore.add(record);
+  financeObjectStore.add(record);
 }
 
-function uploadPizza() {
+function uploadFinances() {
   // open a transaction on your pending db
   const transaction = db.transaction(["transaction"], "readwrite");
 
   // access your pending object store
-  const pizzaObjectStore = transaction.objectStore("transaction");
+  const financeObjectStore = transaction.objectStore("transaction");
 
   // get all records from store and set to a variable
-  const getAll = pizzaObjectStore.getAll();
+  const getAll = financeObjectStore.getAll();
 
   getAll.onsuccess = function () {
     // if there was data in indexedDb's store, let's send it to the api server
@@ -58,9 +58,9 @@ function uploadPizza() {
           }
 
           const transaction = db.transaction(["transaction"], "readwrite");
-          const pizzaObjectStore = transaction.objectStore("transaction");
+          const financeObjectStore = transaction.objectStore("transaction");
           // clear all items in your store
-          pizzaObjectStore.clear();
+          financeObjectStore.clear();
         })
         .catch((err) => {
           // set reference to redirect back here
@@ -71,4 +71,4 @@ function uploadPizza() {
 }
 
 // listen for app coming back online
-window.addEventListener("online", uploadPizza);
+window.addEventListener("online", uploadFinances);
