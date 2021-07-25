@@ -42,7 +42,7 @@ function populateTable() {
 
 function populateChart() {
   // copy array and reverse it
-  let reversed = transactions.save().reverse();
+  let reversed = [...transactions].reverse();
   let sum = 0;
 
   // create date labels for chart
