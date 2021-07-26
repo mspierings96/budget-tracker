@@ -23,4 +23,4 @@ Links:
 
 Github Link: https://github.com/mspierings96/budgettracker2
 
-Live Link: https://mspierings96.github.io/budgettracker2/
+Live Link: https://shielded-waters-12008.herokuapp.com/
